@@ -5,6 +5,8 @@
 
 Aplicación web libre para organizar y publicar torneos deportivos de eliminación directa. Funciona con pádel, tenis, fútbol, vóley, básquet, e-sports y otras disciplinas: cada instalación permite definir su nombre, deporte, vocabulario, moneda, reglas, marcador, jornadas y áreas de juego.
 
+[Ver sitio del proyecto](https://geercaceres.github.io/gestor-torneos/) · [Explorar el código](https://github.com/geercaceres/gestor-torneos)
+
 [Inicio rápido](docs/QUICKSTART.md) · [Guía de uso](docs/USER-GUIDE.md) · [Configuración](docs/CONFIGURATION.md) · [Despliegue](docs/DEPLOYMENT.md) · [Preguntas frecuentes](docs/FAQ.md) · [Roadmap](ROADMAP.md) · [Contribuir](CONTRIBUTING.md)
 
 ## Funciones

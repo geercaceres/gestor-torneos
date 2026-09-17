@@ -1,5 +1,7 @@
 # Presentación para LinkedIn
 
+Sitio del proyecto: https://geercaceres.github.io/gestor-torneos/
+
 ## Texto sugerido
 
 Publiqué **Gestor de Torneos**, una aplicación web libre para organizar torneos deportivos y comunicar la jornada en tiempo real.
