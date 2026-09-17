@@ -14,6 +14,7 @@
     "build:gcp": "vite build --config vite.gcp.config.ts",
     "serve:gcp": "node server/server.mjs",
     "setup:admin": "node scripts/setup.mjs",
+    "demo:seed": "node scripts/seed-demo.mjs",
     "test": "node --test tests/*.test.mjs",
     "typecheck": "tsc --noEmit",
     "start:sites": "echo Use npm run dev or Docker Compose"

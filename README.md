@@ -16,6 +16,24 @@ Aplicación web libre para organizar y publicar torneos deportivos de eliminaci�
 
 Cada instalación administra un torneo. No es todavía una plataforma multiempresa ni incluye pagos en línea, inscripción pública o notificaciones automáticas.
 
+## Galería
+
+| Sitio público | Vista móvil |
+| --- | --- |
+| ![Portada pública con un partido en juego](docs/screenshots/01-portada-publica.png) | ![Portada pública adaptada a celular](docs/screenshots/08-vista-movil.png) |
+
+| Programación y resultados | Cuadro de eliminación |
+| --- | --- |
+| ![Programación con filtros, horarios y estados](docs/screenshots/02-programacion.png) | ![Cuadro de eliminación directa](docs/screenshots/03-cuadro-eliminacion.png) |
+
+| Organización del torneo | Caja |
+| --- | --- |
+| ![Panel de administración de partidos](docs/screenshots/04-administracion-partidos.png) | ![Registro de ventas desde la mesa](docs/screenshots/05-caja.png) |
+
+| Inventario | Reporte de ventas |
+| --- | --- |
+| ![Productos, costos y existencias](docs/screenshots/06-inventario.png) | ![Ingresos, costos y margen bruto](docs/screenshots/07-reporte-ventas.png) |
+
 ## Inicio rápido con Docker
 
 Requisitos: Docker Engine, Docker Compose y un dominio o subdominio que apunte al servidor.
@@ -88,6 +106,32 @@ npm run typecheck
 npm test
 npm run build:gcp
 ```
+
+## Datos de demostración
+
+Para explorar la interfaz sin cargar un torneo manualmente, generá una base descartable con equipos, partidos, resultados, productos, stock, ventas y usuarios de distintos roles:
+
+```sh
+npm run setup:admin
+npm run demo:seed -- data/demo.sqlite
+```
+
+Iniciá el servidor indicando esa base:
+
+```sh
+DATABASE_PATH=data/demo.sqlite npm run build:gcp
+DATABASE_PATH=data/demo.sqlite npm start
+```
+
+En PowerShell:
+
+```powershell
+$env:DATABASE_PATH='data/demo.sqlite'
+npm run build:gcp
+npm start
+```
+
+La base demo no se incluye en Git y el script se niega a sobrescribir una base existente.
 
 ## Personalización
 
