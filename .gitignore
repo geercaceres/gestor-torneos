@@ -1,0 +1,10 @@
+node_modules/
+dist/
+dist-web/
+.env
+data/
+*.tsbuildinfo
+*.key
+CLAVE-*
+
+.local-access.txt

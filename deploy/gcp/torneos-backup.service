@@ -1,0 +1,17 @@
+[Unit]
+Description=Verified SQLite backup to private Google Cloud Storage
+Requires=docker.service
+After=docker.service network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+EnvironmentFile=/etc/torneos-backup.env
+ExecStart=/usr/bin/python3 /opt/torneos/app/deploy/gcp/backup.py
+TimeoutStartSec=5min
+UMask=0077
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/torneos-backup
+NoNewPrivileges=true
