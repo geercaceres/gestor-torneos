@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Guías y preguntas frecuentes
+    url: https://github.com/geercaceres/gestor-torneos/blob/main/docs/FAQ.md
+    about: Revisá primero el inicio rápido, despliegue y preguntas frecuentes.

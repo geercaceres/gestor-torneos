@@ -1,0 +1,37 @@
+name: Proponer una mejora
+description: Describí una necesidad y el resultado que buscás.
+title: "[Mejora]: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: Necesidad
+      description: ¿Qué tarea no podés resolver hoy y quién la realiza?
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Resultado esperado
+      description: Describí el comportamiento, no sólo una pantalla.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Área
+      options:
+        - Sitio público
+        - Competencia y cuadro
+        - Administración
+        - Caja e inventario
+        - Usuarios y permisos
+        - Instalación y despliegue
+        - Documentación
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternativas o ejemplos

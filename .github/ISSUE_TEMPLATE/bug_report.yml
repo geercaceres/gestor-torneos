@@ -1,0 +1,36 @@
+name: Reportar un error
+description: Informá un comportamiento reproducible del proyecto.
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: No incluyas contraseñas, bases reales ni datos personales.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Qué ocurrió
+      description: Explicá el resultado observado y el esperado.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Pasos para reproducirlo
+      placeholder: "1. Abrir…\n2. Elegir…\n3. Ver…"
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Versión o commit
+  - type: input
+    id: environment
+    attributes:
+      label: Navegador y entorno
+      placeholder: Chrome 128, Android; Docker en Ubuntu 24.04
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs o capturas sin datos sensibles
+      render: shell

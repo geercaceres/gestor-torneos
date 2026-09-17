@@ -1,6 +1,11 @@
 # Gestor de Torneos
 
+[![CI](https://github.com/geercaceres/gestor-torneos/actions/workflows/ci.yml/badge.svg)](https://github.com/geercaceres/gestor-torneos/actions/workflows/ci.yml)
+[![Licencia MIT](https://img.shields.io/badge/licencia-MIT-green.svg)](LICENSE)
+
 Aplicación web libre para organizar y publicar torneos deportivos de eliminación directa. Funciona con pádel, tenis, fútbol, vóley, básquet, e-sports y otras disciplinas: cada instalación permite definir su nombre, deporte, vocabulario, moneda, reglas, marcador, jornadas y áreas de juego.
+
+[Inicio rápido](docs/QUICKSTART.md) · [Guía de uso](docs/USER-GUIDE.md) · [Configuración](docs/CONFIGURATION.md) · [Despliegue](docs/DEPLOYMENT.md) · [Preguntas frecuentes](docs/FAQ.md) · [Roadmap](ROADMAP.md) · [Contribuir](CONTRIBUTING.md)
 
 ## Funciones
 
@@ -71,6 +76,8 @@ Abrí `https://torneos.example.com/admin`, ingresá como `admin` y configurá:
 
 Caddy solicita el certificado TLS y redirige HTTP a HTTPS. El puerto 3001 y SQLite no deben exponerse a Internet.
 
+La guía de [inicio rápido](docs/QUICKSTART.md) incluye una prueba local y la guía de [despliegue](docs/DEPLOYMENT.md) cubre DNS, HTTPS, respaldos y actualizaciones.
+
 ## Ejecutar en Windows
 
 Instalá Node.js 24, ejecutá lo siguiente una vez y luego usá `INICIAR-LOCAL.ps1`:
@@ -137,7 +144,7 @@ La base demo no se incluye en Git y el script se niega a sobrescribir una base e
 
 La sección **Administración → Torneo y reglas** permite configurar sin editar código:
 
-- nombre, marca, frase, descripción y afiche;
+- nombre, marca, frase, descripción, logotipo y afiche;
 - deporte o disciplina;
 - `Equipo/Equipos`, `Pareja/Parejas`, `Jugador/Jugadores` u otros términos;
 - `Cancha/Canchas`, `Pista/Pistas`, `Campo/Campos` u otros términos;
@@ -146,6 +153,8 @@ La sección **Administración → Torneo y reglas** permite configurar sin edita
 - reglamento, contacto, Google Maps, WhatsApp y datos de transferencia.
 
 La competición actual es de eliminación directa. Un formato de grupos, liga o doble eliminación requerirá un motor de competición adicional.
+
+Consultá el [roadmap público](ROADMAP.md) para ver qué está disponible y qué ampliaciones requieren cambios del motor.
 
 ## Respaldos
 
