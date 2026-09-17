@@ -1,38 +1,38 @@
-# Guía de uso
+# User guide
 
-## 1. Preparar el torneo
+## 1. Prepare the tournament
 
-Entrá a `/admin` y abrí **Torneo y reglas**. Definí la identidad, el deporte, las palabras que usa tu disciplina, la moneda, el local y las jornadas. El logo y el afiche aceptan una ruta dentro de `public`, por ejemplo `/logo.png`, o un enlace HTTPS.
+Open `/admin` and select **Tournament & rules**. Choose English or Spanish, then define the identity, sport, discipline-specific terms, currency, venue, and event days. Logos and posters accept a path inside `public`, such as `/logo.png`, or an HTTPS URL.
 
-Elegí el método de resultado:
+Choose the scoring method:
 
-- **Ganador y marcador libre** sirve para cualquier deporte.
-- **Resultado por sets** calcula quién ganó según los sets registrados.
+- **Winner and free-form score** works for any sport.
+- **Set-based result** calculates the winner from the recorded sets.
 
-El motor actual genera eliminación directa para 2, 4, 8, 16 o 32 lugares.
+The current engine creates single-elimination brackets with 2, 4, 8, 16, or 32 slots.
 
-## 2. Cargar participantes y horarios
+## 2. Add participants and schedules
 
-En **Participantes**, escribí los nombres en el orden de los cruces. Un lugar vacío puede convertirse en pase libre antes de iniciar el cuadro.
+Under **Participants**, enter names in opening-match order. An empty slot can become a bye before the bracket starts.
 
-En **Partidos**, ajustá fecha, hora, duración y área de juego. La reprogramación automática respeta las jornadas, la disponibilidad de áreas y las dependencias entre rondas.
+Under **Matches**, adjust date, time, duration, and playing area. Automatic rescheduling respects event days, area availability, and round dependencies.
 
-## 3. Operar el evento
+## 3. Run the event
 
-Usá los estados **Programado**, **Llamado** y **En juego** para que el sitio público muestre lo que ocurre. Una misma cancha no puede tener dos partidos activos. Al finalizar, registrá el ganador, el marcador o una ausencia justificada.
+Use **Scheduled**, **Called**, and **Live** so the public site reflects the current state. One playing area cannot have two live matches. When a match ends, record the winner, score, or walkover.
 
-La vista `/pantalla` sirve para un televisor o proyector. Los cambios del administrador aparecen en el sitio público al actualizarse.
+Use `/pantalla` for a TV or projector. Saved organizer changes appear on the public site during its next refresh.
 
-## 4. Caja, inventario y comidas
+## 4. Point of sale, inventory, and food
 
-Creá productos con costo, precio, stock mínimo y disponibilidad. Caja descuenta existencias al registrar una venta y separa efectivo de transferencias. Las anulaciones requieren motivo y devuelven el stock.
+Create products with cost, price, low-stock threshold, and availability. Each recorded sale reduces inventory and separates cash from transfers. Voids require a reason and can return items to inventory.
 
-El reporte muestra ingresos, costos, margen bruto, unidades y ventas por producto, operador y día; también permite exportar CSV.
+The report shows revenue, cost, gross margin, units, and sales by product, operator, and day. Reports and inventory movements can be exported as CSV.
 
-## 5. Usuarios y permisos
+## 5. Users and permissions
 
-Administración puede crear usuarios por función. Asigná sólo los módulos necesarios: torneo, partidos, productos, caja, reportes o usuarios. No compartas la cuenta principal entre operadores.
+Administrators can create an individual account for each role. Grant only the required tournament, product, sales, report, or user modules. Do not share the main administrator account.
 
-## 6. Después del torneo
+## 6. After the tournament
 
-Exportá la información pública y generá un respaldo consistente de SQLite. Conservá la copia fuera del servidor antes de actualizar o apagar la infraestructura. Consultá [Despliegue](DEPLOYMENT.md) para los comandos.
+Export the public tournament information and create a consistent SQLite backup. Store it outside the server before updating or removing infrastructure. See [Deployment](DEPLOYMENT.md) for commands.

@@ -4,7 +4,7 @@ import {useEffect,useId,useRef,useState} from 'react';
 import {ChevronLeft,ChevronRight,MoveHorizontal} from 'lucide-react';
 import {Button} from '@/components/ui/button';
 
-export function SectionNavigation({items,selected,onSelect}:{items:string[];selected:string;onSelect:(item:string)=>void}){
+export function SectionNavigation({items,selected,onSelect,labels={},locale='en'}:{items:string[];selected:string;onSelect:(item:string)=>void;labels?:Record<string,string>;locale?:'en'|'es'}){
  const row=useRef<HTMLDivElement>(null),nav=useRef<HTMLElement>(null);
  const id=useId();
  const [edges,setEdges]=useState({overflow:false,left:false,right:false});
@@ -41,12 +41,12 @@ export function SectionNavigation({items,selected,onSelect}:{items:string[];sele
 
  return <div className="section-navigation no-print">
   <div ref={row} className={'section-navigation-row'+(edges.overflow?' has-overflow':'')}>
-   {edges.overflow&&<Button type="button" variant="outline" className="section-scroll-button" aria-label="Ver secciones anteriores" aria-controls={id} disabled={!edges.left} onClick={()=>move(-1)}><ChevronLeft aria-hidden="true"/></Button>}
-   <nav ref={nav} id={id} className="tabs" aria-label="Secciones del torneo" aria-describedby={edges.right?id+'-hint':undefined}>
-    {items.map(item=><button key={item} type="button" className={item===selected?'active':''} aria-pressed={item===selected} onClick={()=>onSelect(item)}>{item}</button>)}
+   {edges.overflow&&<Button type="button" variant="outline" className="section-scroll-button" aria-label={locale==='es'?'Ver secciones anteriores':'View previous sections'} aria-controls={id} disabled={!edges.left} onClick={()=>move(-1)}><ChevronLeft aria-hidden="true"/></Button>}
+   <nav ref={nav} id={id} className="tabs" aria-label={locale==='es'?'Secciones del torneo':'Tournament sections'} aria-describedby={edges.right?id+'-hint':undefined}>
+    {items.map(item=><button key={item} type="button" className={item===selected?'active':''} aria-pressed={item===selected} onClick={()=>onSelect(item)}>{labels[item]||item}</button>)}
    </nav>
-   {edges.overflow&&<Button type="button" variant="outline" className="section-scroll-button" aria-label="Ver más secciones" aria-controls={id} disabled={!edges.right} onClick={()=>move(1)}><ChevronRight aria-hidden="true"/></Button>}
+   {edges.overflow&&<Button type="button" variant="outline" className="section-scroll-button" aria-label={locale==='es'?'Ver más secciones':'View more sections'} aria-controls={id} disabled={!edges.right} onClick={()=>move(1)}><ChevronRight aria-hidden="true"/></Button>}
   </div>
-  {edges.overflow&&<div className="section-scroll-hint">{edges.right&&<p id={id+'-hint'}><MoveHorizontal size={15} aria-hidden="true"/> Deslizá o tocá la flecha para ver más secciones</p>}</div>}
+  {edges.overflow&&<div className="section-scroll-hint">{edges.right&&<p id={id+'-hint'}><MoveHorizontal size={15} aria-hidden="true"/> {locale==='es'?'Deslizá o tocá la flecha para ver más secciones':'Swipe or tap the arrow to view more sections'}</p>}</div>}
  </div>;
 }

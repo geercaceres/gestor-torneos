@@ -8,7 +8,7 @@ import {DatabaseSync} from 'node:sqlite';
 import {fileURLToPath} from 'node:url';
 import {seedState} from '../lib/tournament.mjs';
 const root=fileURLToPath(new URL('..',import.meta.url));
-test('Importación inicial conserva torneo y rechaza sobrescribir una base existente',()=>{
+test('Initial import preserves the tournament and refuses to overwrite an existing database',()=>{
  const dir=mkdtempSync(resolve(tmpdir(),'padel-import-'));
  try{
   const dbPath=resolve(dir,'new.sqlite');const input=resolve(dir,'state.json');

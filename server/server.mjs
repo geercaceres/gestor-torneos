@@ -18,7 +18,7 @@ const allowedOrigins=new Set([origin,...(!production?['http://localhost:3000','h
 const salt=process.env.ADMIN_PASSWORD_SALT;
 const passwordHash=process.env.ADMIN_PASSWORD_HASH;
 if(!salt||!passwordHash||!/^[a-f0-9]{128}$/.test(passwordHash))throw new Error('Primero ejecutá node scripts/setup.mjs para configurar el administrador.');
-const dbPath=resolve(root,process.env.DATABASE_PATH||'data/torneo.sqlite');
+const dbPath=resolve(root,process.env.DATABASE_PATH||'data/tournament.sqlite');
 mkdirSync(dirname(dbPath),{recursive:true});
 const db=new DatabaseSync(dbPath);
 db.exec('PRAGMA journal_mode=WAL; PRAGMA busy_timeout=5000; PRAGMA foreign_keys=ON;');

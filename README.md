@@ -1,114 +1,100 @@
-# Gestor de Torneos
+# Tournament Manager
 
 [![CI](https://github.com/geercaceres/gestor-torneos/actions/workflows/ci.yml/badge.svg)](https://github.com/geercaceres/gestor-torneos/actions/workflows/ci.yml)
-[![Licencia MIT](https://img.shields.io/badge/licencia-MIT-green.svg)](LICENSE)
+[![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-Aplicación web libre para organizar y publicar torneos deportivos de eliminación directa. Funciona con pádel, tenis, fútbol, vóley, básquet, e-sports y otras disciplinas: cada instalación permite definir su nombre, deporte, vocabulario, moneda, reglas, marcador, jornadas y áreas de juego.
+An open-source web application for running and publishing single-elimination sports tournaments. It works for padel, tennis, football, volleyball, basketball, esports, and other disciplines. Each installation can define its own name, sport, terminology, currency, rules, scoring, event days, and playing areas.
 
-[Ver sitio del proyecto](https://geercaceres.github.io/gestor-torneos/) · [Explorar el código](https://github.com/geercaceres/gestor-torneos)
+The interface supports **English and Spanish**. New installations and demo data default to English; existing Spanish installations keep their language during migration.
 
-[Inicio rápido](docs/QUICKSTART.md) · [Guía de uso](docs/USER-GUIDE.md) · [Configuración](docs/CONFIGURATION.md) · [Despliegue](docs/DEPLOYMENT.md) · [Preguntas frecuentes](docs/FAQ.md) · [Roadmap](ROADMAP.md) · [Contribuir](CONTRIBUTING.md)
+[Project website](https://geercaceres.github.io/gestor-torneos/) · [Source code](https://github.com/geercaceres/gestor-torneos)
 
-## Funciones
+[Quick start](docs/QUICKSTART.md) · [User guide](docs/USER-GUIDE.md) · [Configuration](docs/CONFIGURATION.md) · [Deployment](docs/DEPLOYMENT.md) · [FAQ](docs/FAQ.md) · [Roadmap](ROADMAP.md) · [Contributing](CONTRIBUTING.md)
 
-- Sitio público adaptable a celular y escritorio: próximos partidos, programación, resultados, cuadro, participantes, reglas, ubicación, transferencias y menú.
-- Panel de administración para participantes, horarios, llamados, encuentros en juego, resultados, W.O., avisos y reglas.
-- Cuadros de 2, 4, 8, 16 o 32 lugares, una o varias jornadas y hasta 8 áreas de juego.
-- Resultado por sets o modo genérico de ganador y marcador libre.
-- Caja e inventario opcionales: productos, costo, precio, stock, ventas, anulaciones y reportes CSV.
-- RBAC con roles de administración, organización, responsable de comidas y caja.
-- Vista para pantalla o proyector en `/pantalla`.
-- SQLite, historial de cambios y exportación del torneo.
-- Docker Compose y Caddy con HTTPS automático.
+## Features
 
-Cada instalación administra un torneo. No es todavía una plataforma multiempresa ni incluye pagos en línea, inscripción pública o notificaciones automáticas.
+- Responsive public site with live matches, schedule, results, bracket, participants, rules, location, transfer details, and menu.
+- Administration panel for participants, schedules, calls, live matches, results, walkovers, announcements, and rules.
+- Brackets with 2, 4, 8, 16, or 32 slots, multiple event days, and up to 8 playing areas.
+- Set-based scoring or a generic winner plus free-form score.
+- Optional point of sale and inventory: products, costs, prices, quantities, voids, and CSV reports.
+- Server-enforced RBAC for administrators, organizers, food managers, and cashiers.
+- TV or projector view at `/pantalla`.
+- SQLite storage, audit history, and tournament export.
+- Docker Compose and Caddy with automatic HTTPS.
 
-## Galería
+Each installation currently manages one tournament. Multi-tenant hosting, online payments, public registration, and automatic notifications are outside the current scope.
 
-| Sitio público | Vista móvil |
+## Gallery
+
+| Public tournament page | Mobile view |
 | --- | --- |
-| ![Portada pública con un partido en juego](docs/screenshots/01-portada-publica.png) | ![Portada pública adaptada a celular](docs/screenshots/08-vista-movil.png) |
+| ![Public tournament page with a live match](docs/screenshots/01-public-home.png) | ![Public tournament page on a phone](docs/screenshots/08-mobile-view.png) |
 
-| Programación y resultados | Cuadro de eliminación |
+| Schedule and results | Single-elimination bracket |
 | --- | --- |
-| ![Programación con filtros, horarios y estados](docs/screenshots/02-programacion.png) | ![Cuadro de eliminación directa](docs/screenshots/03-cuadro-eliminacion.png) |
+| ![Schedule with filters, times, and statuses](docs/screenshots/02-schedule.png) | ![Single-elimination bracket](docs/screenshots/03-single-elimination-bracket.png) |
 
-| Organización del torneo | Caja |
+| Match administration | Point of sale |
 | --- | --- |
-| ![Panel de administración de partidos](docs/screenshots/04-administracion-partidos.png) | ![Registro de ventas desde la mesa](docs/screenshots/05-caja.png) |
+| ![Match administration dashboard](docs/screenshots/04-match-administration.png) | ![Point-of-sale interface](docs/screenshots/05-point-of-sale.png) |
 
-| Inventario | Reporte de ventas |
+| Inventory | Sales report |
 | --- | --- |
-| ![Productos, costos y existencias](docs/screenshots/06-inventario.png) | ![Ingresos, costos y margen bruto](docs/screenshots/07-reporte-ventas.png) |
+| ![Products, costs, and inventory](docs/screenshots/06-inventory.png) | ![Revenue, costs, and gross margin](docs/screenshots/07-sales-report.png) |
 
-## Inicio rápido con Docker
+## Quick start with Docker
 
-Requisitos: Docker Engine, Docker Compose y un dominio o subdominio que apunte al servidor.
+Requirements: Docker Engine and Docker Compose.
 
 ```sh
 git clone https://github.com/geercaceres/gestor-torneos.git
 cd gestor-torneos
 docker run --rm --user "$(id -u):$(id -g)" -v "$PWD:/app" -w /app node:24-bookworm-slim node scripts/setup.mjs
+docker compose up -d --build
 ```
 
-El último comando crea `.env` y muestra una contraseña aleatoria para `admin`. Guardala en un gestor de contraseñas. Editá `.env`:
+The setup command creates `.env` and prints a random password for the `admin` account. Store it in a password manager. For a public deployment, edit:
 
 ```dotenv
-PUBLIC_ORIGIN=https://torneos.example.com
-SITE_ADDRESS=torneos.example.com
-DATABASE_PATH=/data/torneo.sqlite
+PUBLIC_ORIGIN=https://tournaments.example.com
+SITE_ADDRESS=tournaments.example.com
+DATABASE_PATH=/data/tournament.sqlite
 ```
 
-Luego iniciá la aplicación:
+Open `/admin`, sign in as `admin`, and configure identity, language, sport, terminology, currency, dates, playing areas, scoring, participants, rules, and public links.
 
-```sh
-docker compose up -d --build
-docker compose ps
-docker compose logs --tail=80 app caddy
-```
+Caddy requests the TLS certificate and redirects HTTP to HTTPS. Do not expose port 3001 or SQLite to the Internet.
 
-Abrí `https://torneos.example.com/admin`, ingresá como `admin` y configurá:
+## Run on Windows
 
-1. Nombre, marca, deporte y descripción.
-2. Cómo se llama cada participante y cada área de juego.
-3. Moneda, inscripción y premios.
-4. Fechas, horarios, cantidad de áreas y duración de turnos.
-5. Método de resultado: sets o ganador con marcador libre.
-6. Participantes, reglas, ubicación y enlaces públicos.
-
-Caddy solicita el certificado TLS y redirige HTTP a HTTPS. El puerto 3001 y SQLite no deben exponerse a Internet.
-
-La guía de [inicio rápido](docs/QUICKSTART.md) incluye una prueba local y la guía de [despliegue](docs/DEPLOYMENT.md) cubre DNS, HTTPS, respaldos y actualizaciones.
-
-## Ejecutar en Windows
-
-Instalá Node.js 24, ejecutá lo siguiente una vez y luego usá `INICIAR-LOCAL.ps1`:
+Install Node.js 24, then run:
 
 ```powershell
 npm ci
 npm run build:gcp
-.\INICIAR-LOCAL.ps1
+.\START-LOCAL.ps1
 ```
 
-La primera ejecución genera credenciales locales. Administración queda en `http://localhost:3001/admin`.
+The first run generates local credentials. Administration is available at `http://localhost:3001/admin`.
 
-## Desarrollo
+## Development
 
 ```sh
 npm ci
 npm run setup:admin
 ```
 
-En dos terminales:
+Run the API and frontend in separate terminals:
 
 ```sh
 node server/server.mjs
 npm run dev
 ```
 
-El frontend de desarrollo abre en `http://localhost:3000` y usa la API local en el puerto 3001.
+The development frontend uses `http://localhost:3000` and the local API uses port 3001.
 
-Validaciones:
+Validation:
 
 ```sh
 npm run typecheck
@@ -116,23 +102,18 @@ npm test
 npm run build:gcp
 ```
 
-## Datos de demostración
+## Demo data
 
-Para explorar la interfaz sin cargar un torneo manualmente, generá una base descartable con equipos, partidos, resultados, productos, stock, ventas y usuarios de distintos roles:
+Create a disposable database with sample participants, matches, results, products, inventory, sales, and users:
 
 ```sh
 npm run setup:admin
 npm run demo:seed -- data/demo.sqlite
-```
-
-Iniciá el servidor indicando esa base:
-
-```sh
 DATABASE_PATH=data/demo.sqlite npm run build:gcp
 DATABASE_PATH=data/demo.sqlite npm start
 ```
 
-En PowerShell:
+PowerShell:
 
 ```powershell
 $env:DATABASE_PATH='data/demo.sqlite'
@@ -140,54 +121,42 @@ npm run build:gcp
 npm start
 ```
 
-La base demo no se incluye en Git y el script se niega a sobrescribir una base existente.
+The demo database is ignored by Git, contains only fictional English data, and is never overwritten by the seed script.
 
-## Personalización
+## Customization and languages
 
-La sección **Administración → Torneo y reglas** permite configurar sin editar código:
+Use **Administration → Tournament & rules** to configure the interface language, identity, sport, participant and playing-area terms, currency, scoring, rules, contact details, Google Maps, WhatsApp, and transfer information.
 
-- nombre, marca, frase, descripción, logotipo y afiche;
-- deporte o disciplina;
-- `Equipo/Equipos`, `Pareja/Parejas`, `Jugador/Jugadores` u otros términos;
-- `Cancha/Canchas`, `Pista/Pistas`, `Campo/Campos` u otros términos;
-- moneda mediante código ISO (`PYG`, `USD`, `ARS`, etc.);
-- formato por sets o resultado genérico;
-- reglamento, contacto, Google Maps, WhatsApp y datos de transferencia.
+The current competition engine supports single elimination. Group stages, leagues, and double elimination require additional competition engines; see the [roadmap](ROADMAP.md).
 
-La competición actual es de eliminación directa. Un formato de grupos, liga o doble eliminación requerirá un motor de competición adicional.
+## Backups and updates
 
-Consultá el [roadmap público](ROADMAP.md) para ver qué está disponible y qué ampliaciones requieren cambios del motor.
-
-## Respaldos
-
-Para obtener una copia consistente de SQLite con el servidor activo:
+Create a consistent SQLite backup while the server is running:
 
 ```sh
-docker compose exec app node scripts/backup.mjs /data/backups/torneo.sqlite
-docker compose cp app:/data/backups/torneo.sqlite ./torneo-respaldo.sqlite
+docker compose exec app node scripts/backup.mjs /data/backups/tournament.sqlite
+docker compose cp app:/data/backups/tournament.sqlite ./tournament-backup.sqlite
 ```
 
-No ejecutes `docker compose down -v` si querés conservar los datos. Guardá los respaldos fuera del servidor.
+Store backups outside the server. Do not run `docker compose down -v` if you need to preserve data.
 
-## Actualizaciones
-
-Hacé un respaldo, actualizá el código sin reemplazar `.env` ni el volumen y reconstruí:
+Before updating, create a backup and then run:
 
 ```sh
 git pull
 docker compose up -d --build
 ```
 
-## Seguridad
+## Security
 
-- Contraseñas con scrypt y salt; nunca se guardan en texto plano.
-- Cookies HttpOnly, SameSite Strict y Secure en producción.
-- Autorización RBAC en servidor, protección de origen y límite de intentos.
-- Transacciones para ventas e inventario y control de revisiones simultáneas.
-- La información cargada en reglas, participantes, contacto y enlaces es pública.
+- Passwords use scrypt with a per-installation salt and are never stored as plaintext.
+- Production cookies are HttpOnly, SameSite Strict, and Secure.
+- RBAC is enforced on the server, with origin protection and rate limiting.
+- Sales and inventory use transactions and revision checks.
+- Rules, participant names, contact details, and configured public links are public information.
 
-Reportá vulnerabilidades de forma privada al responsable del repositorio. No publiques credenciales, bases de datos ni datos reales de participantes en un issue.
+Report vulnerabilities privately to the repository owner. Never publish credentials, databases, or real participant data in an issue.
 
-## Licencia
+## License
 
-[MIT](LICENSE). Podés usar, modificar y redistribuir el proyecto conservando el aviso de licencia.
+[MIT](LICENSE). You may use, modify, and redistribute the project while preserving the license notice.

@@ -1,8 +1,8 @@
-# Despliegue
+# Deployment
 
-## Servidor recomendado
+## Recommended server
 
-Una VM pequeña con Linux, Docker y Docker Compose es suficiente para un torneo. Creá un registro DNS `A` para el subdominio apuntando a la IP pública de la VM y permití tráfico entrante en los puertos 80 y 443.
+A small Linux VM with Docker and Docker Compose is sufficient for a tournament. Create a DNS `A` record for the subdomain pointing to the VM public IP and allow inbound traffic on ports 80 and 443.
 
 ```sh
 git clone https://github.com/geercaceres/gestor-torneos.git
@@ -10,15 +10,15 @@ cd gestor-torneos
 docker run --rm --user "$(id -u):$(id -g)" -v "$PWD:/app" -w /app node:24-bookworm-slim node scripts/setup.mjs
 ```
 
-Editá `.env`:
+Edit `.env`:
 
 ```dotenv
-PUBLIC_ORIGIN=https://torneos.example.com
-SITE_ADDRESS=torneos.example.com
-DATABASE_PATH=/data/torneo.sqlite
+PUBLIC_ORIGIN=https://tournaments.example.com
+SITE_ADDRESS=tournaments.example.com
+DATABASE_PATH=/data/tournament.sqlite
 ```
 
-Iniciá y verificá:
+Start and verify:
 
 ```sh
 docker compose up -d --build
@@ -26,32 +26,34 @@ docker compose ps
 docker compose logs --tail=80 app caddy
 ```
 
-Caddy obtiene y renueva el certificado TLS. La aplicación y SQLite permanecen en la red interna; no publiques el puerto 3001.
+Caddy obtains and renews the TLS certificate. The application and SQLite remain on the internal network; do not publish port 3001.
 
-## Respaldar
+## Back up
 
 ```sh
-docker compose exec app node scripts/backup.mjs /data/backups/torneo.sqlite
-docker compose cp app:/data/backups/torneo.sqlite ./torneo-respaldo.sqlite
+docker compose exec app node scripts/backup.mjs /data/backups/tournament.sqlite
+docker compose cp app:/data/backups/tournament.sqlite ./tournament-backup.sqlite
 ```
 
-Guardá la copia fuera de la VM. No uses `docker compose down -v` si necesitás conservar los datos.
+Store the copy outside the VM. Do not use `docker compose down -v` when data must be preserved.
 
-## Actualizar
+## Update
+
+Create a backup, then run:
 
 ```sh
 git pull
 docker compose up -d --build
 ```
 
-Hacé un respaldo antes. Las migraciones de datos se aplican al leer documentos anteriores.
+Data migrations are applied when older documents are read.
 
-## Lista de control
+## Checklist
 
-- DNS resuelve a la IP correcta.
-- HTTPS carga sin advertencias.
-- `.env` no está versionado y tiene permisos limitados.
-- `/admin` requiere autenticación.
-- Usuarios de caja sólo poseen los permisos necesarios.
-- Existe un respaldo descargado y probado.
-- Los logs no muestran reinicios ni errores persistentes.
+- DNS resolves to the correct IP.
+- HTTPS loads without warnings.
+- `.env` is not tracked and has restricted permissions.
+- `/admin` requires authentication.
+- Cashier accounts have only the permissions they need.
+- A downloaded backup has been tested.
+- Logs show no repeated restarts or persistent errors.

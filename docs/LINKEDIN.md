@@ -1,36 +1,36 @@
-# Presentación para LinkedIn
+# LinkedIn launch notes
 
-Sitio del proyecto: https://geercaceres.github.io/gestor-torneos/
+Project website: https://geercaceres.github.io/gestor-torneos/
 
-## Texto sugerido
+## Suggested post
 
-Publiqué **Gestor de Torneos**, una aplicación web libre para organizar torneos deportivos y comunicar la jornada en tiempo real.
+I published **Tournament Manager**, an open-source web application for organizing sports tournaments and keeping participants informed in real time.
 
-El proyecto nació a partir de un torneo de pádel, pero lo convertí en una herramienta configurable para otras disciplinas. Permite definir el deporte, los participantes, las áreas de juego, las reglas, la moneda y la forma de registrar resultados.
+The project started with a padel tournament and evolved into a configurable tool for different sports. Organizers can define their sport, participant and playing-area terminology, rules, currency, language, and scoring method.
 
-Incluye:
+It includes:
 
-- sitio público adaptable a celular y escritorio;
-- programación, resultados y cuadro de eliminación directa;
-- panel de organización con actualización en tiempo real;
-- usuarios y permisos por responsabilidad;
-- caja, inventario, costos y reportes de ventas;
-- despliegue sencillo con Docker y HTTPS automático.
+- a responsive public experience in English and Spanish;
+- schedules, results, and a single-elimination bracket;
+- a live organizer dashboard;
+- role-based users and permissions;
+- point of sale, inventory, costs, and sales reports;
+- straightforward Docker deployment with automatic HTTPS.
 
-El código está disponible con licencia MIT:
+The source is available under the MIT License:
 https://github.com/geercaceres/gestor-torneos
 
-Me interesa seguir ampliándolo con nuevos formatos de competición y mejoras que puedan servir a clubes, organizadores y comunidades deportivas.
+I would like to keep expanding it with new competition formats and features useful to clubs, organizers, and sports communities.
 
 #OpenSource #SportsTech #TypeScript #Docker #SoftwareDevelopment
 
-## Orden recomendado de imágenes
+## Recommended image order
 
-1. Portada pública con el encuentro en juego.
-2. Programación y estados de partidos.
-3. Cuadro de eliminación directa.
-4. Panel de administración.
-5. Caja e inventario.
-6. Reporte de ventas.
+1. Public home with a live match.
+2. Schedule and match statuses.
+3. Single-elimination bracket.
+4. Match administration.
+5. Point of sale and inventory.
+6. Sales report.
 
-Usá entre cuatro y seis capturas. La primera debe mostrar el valor del producto sin necesitar explicación; las restantes pueden demostrar profundidad funcional.
+Use four to six screenshots. The first image should communicate the product value without additional explanation; the remaining images can demonstrate operational depth.

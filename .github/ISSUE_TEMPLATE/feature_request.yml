@@ -1,37 +1,37 @@
-name: Proponer una mejora
-description: Describí una necesidad y el resultado que buscás.
-title: "[Mejora]: "
+name: Request a feature
+description: Describe a need and the outcome you want.
+title: "[Feature]: "
 labels: [enhancement]
 body:
   - type: textarea
     id: need
     attributes:
-      label: Necesidad
-      description: ¿Qué tarea no podés resolver hoy y quién la realiza?
+      label: Need
+      description: Which task can you not complete today, and who performs it?
     validations:
       required: true
   - type: textarea
     id: outcome
     attributes:
-      label: Resultado esperado
-      description: Describí el comportamiento, no sólo una pantalla.
+      label: Expected outcome
+      description: Describe the behavior, not only a screen.
     validations:
       required: true
   - type: dropdown
     id: area
     attributes:
-      label: Área
+      label: Area
       options:
-        - Sitio público
-        - Competencia y cuadro
-        - Administración
-        - Caja e inventario
-        - Usuarios y permisos
-        - Instalación y despliegue
-        - Documentación
+        - Public site
+        - Competition and bracket
+        - Administration
+        - Point of sale and inventory
+        - Users and permissions
+        - Installation and deployment
+        - Documentation
     validations:
       required: true
   - type: textarea
     id: alternatives
     attributes:
-      label: Alternativas o ejemplos
+      label: Alternatives or examples

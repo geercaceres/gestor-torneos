@@ -1,6 +1,6 @@
-# Inicio rápido
+# Quick start
 
-La forma más simple de probar Gestor de Torneos es con Docker. Necesitás Docker Engine y Docker Compose.
+The simplest way to try Tournament Manager is with Docker Engine and Docker Compose.
 
 ```sh
 git clone https://github.com/geercaceres/gestor-torneos.git
@@ -9,11 +9,11 @@ docker run --rm --user "$(id -u):$(id -g)" -v "$PWD:/app" -w /app node:24-bookwo
 docker compose up -d --build
 ```
 
-El asistente crea `.env` y muestra una contraseña aleatoria para `admin`. Guardala: no se puede recuperar en texto plano.
+The setup assistant creates `.env` and prints a random password for `admin`. Save it because plaintext passwords cannot be recovered.
 
-Para una prueba local, dejá `SITE_ADDRESS=:8080` en `.env` y abrí `http://localhost:8080/admin`. Para publicar con dominio y HTTPS, consultá [Despliegue](DEPLOYMENT.md).
+For local testing, keep `SITE_ADDRESS=:8080` in `.env` and open `http://localhost:8080/admin`. See [Deployment](DEPLOYMENT.md) to use a domain and HTTPS.
 
-## Cargar datos de demostración
+## Load demo data
 
 ```sh
 npm ci
@@ -21,26 +21,26 @@ npm run setup:admin
 npm run demo:seed -- data/demo.sqlite
 ```
 
-Después iniciá la aplicación usando `DATABASE_PATH=data/demo.sqlite`. El script se niega a sobrescribir una base existente.
+Start the application with `DATABASE_PATH=data/demo.sqlite`. The script refuses to overwrite an existing database. All sample content is fictional and in English.
 
-## Windows sin Docker
+## Windows without Docker
 
-Con Node.js 24 instalado:
+With Node.js 24 installed:
 
 ```powershell
 npm ci
 npm run build:gcp
-.\INICIAR-LOCAL.ps1
+.\START-LOCAL.ps1
 ```
 
-Abrí `http://localhost:3001/admin`. La primera ejecución genera credenciales locales.
+Open `http://localhost:3001/admin`. The first run generates local credentials.
 
-## Primeros pasos
+## First steps
 
-1. Configurá nombre, deporte, logo, vocabulario y jornadas.
-2. Elegí resultado por sets o ganador con marcador libre.
-3. Definí participantes y cruces iniciales.
-4. Revisá horarios y reglas antes de compartir la URL pública.
-5. Creá usuarios limitados para caja o comidas si otras personas colaborarán.
+1. Configure the language, name, sport, logo, terminology, and event days.
+2. Choose set-based scoring or winner with a free-form score.
+3. Add participants and opening matchups.
+4. Review schedules and rules before sharing the public URL.
+5. Create restricted cashier or food accounts for event staff.
 
-La [Guía de uso](USER-GUIDE.md) explica el día del torneo paso a paso.
+The [User guide](USER-GUIDE.md) explains the tournament workflow.

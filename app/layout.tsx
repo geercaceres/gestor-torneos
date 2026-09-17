@@ -1,8 +1,8 @@
 import './globals.css';
 export const metadata = {
- title:'Gestor de Torneos',
- description:'Programación, resultados, cuadro y administración para torneos deportivos.',
- openGraph:{title:'Gestor de Torneos',description:'Seguí la programación y los resultados del torneo.',type:'website',locale:'es_PY'},
- twitter:{card:'summary',title:'Gestor de Torneos',description:'Programación y resultados del torneo.'}
+ title:'Tournament Manager',
+ description:'Schedules, results, brackets, and administration for sports tournaments.',
+ openGraph:{title:'Tournament Manager',description:'Follow the tournament schedule and results.',type:'website',locale:'en_US'},
+ twitter:{card:'summary',title:'Tournament Manager',description:'Tournament schedules and results.'}
 };
-export default function RootLayout({children}: Readonly<{children: React.ReactNode}>) { return <html lang="es"><body>{children}</body></html>; }
+export default function RootLayout({children}: Readonly<{children: React.ReactNode}>) { return <html lang="en"><body>{children}</body></html>; }

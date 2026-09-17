@@ -4,7 +4,7 @@ import {resolve,dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 const root=resolve(fileURLToPath(new URL('..',import.meta.url)));
 if(existsSync(resolve(root,'.env')))process.loadEnvFile(resolve(root,'.env'));
-const source=resolve(root,process.env.DATABASE_PATH||'data/torneo.sqlite');
+const source=resolve(root,process.env.DATABASE_PATH||'data/tournament.sqlite');
 const destination=resolve(process.argv[2]||resolve(root,'data/backups/torneo-'+new Date().toISOString().replaceAll(':','-')+'.sqlite'));
 if(source===destination)throw new Error('El respaldo debe usar un archivo diferente.');
 mkdirSync(dirname(destination),{recursive:true});

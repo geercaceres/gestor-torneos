@@ -4,7 +4,7 @@ import {AlertDialog,AlertDialogContent,AlertDialogHeader,AlertDialogTitle,AlertD
 
 type Drafts={dirty:boolean;mark:(form:HTMLFormElement,dirty:boolean)=>void;clear:()=>void;confirm:(message:string)=>Promise<boolean>;protect:(scope?:string)=>Promise<boolean>;submit:{current:HTMLFormElement|null}};
 const Context=createContext<Drafts|null>(null);
-export function useDrafts(){const value=useContext(Context);if(!value)throw new Error('DraftProvider requerido');return value;}
+export function useDrafts(){const value=useContext(Context);if(!value)throw new Error('DraftProvider is required');return value;}
 
 export function DraftProvider({children}:{children:ReactNode}){
  const forms=useRef(new Map<HTMLFormElement,string>()),submit=useRef<HTMLFormElement|null>(null);
@@ -17,12 +17,14 @@ export function DraftProvider({children}:{children:ReactNode}){
  const protect=useCallback(async(scope?:string)=>{
   const origin=submit.current;
   const affected=[...forms.current].some(([form,group])=>form.isConnected&&form!==origin&&(!scope||scope===group));
-  return !affected||await confirm('Esta operación puede reemplazar otros cambios sin guardar. Cancelá para conservarlos o continuá para descartarlos.');
+  const spanish=document.documentElement.lang==='es';
+  return !affected||await confirm(spanish?'Esta operación puede reemplazar otros cambios sin guardar. Cancelá para conservarlos o continuá para descartarlos.':'This operation may replace other unsaved changes. Cancel to keep them or continue to discard them.');
  },[confirm]);
  useEffect(()=>{if(!dirty)return;const leave=(e:BeforeUnloadEvent)=>{e.preventDefault();e.returnValue='';};window.addEventListener('beforeunload',leave);return()=>window.removeEventListener('beforeunload',leave)},[dirty]);
  useEffect(()=>()=>{answer.current?.(false)},[]);
  const value=useMemo(()=>({dirty,mark,clear,confirm,protect,submit}),[dirty,mark,clear,confirm,protect]);
- return <Context.Provider value={value}>{children}<AlertDialog open={!!question} onOpenChange={open=>{if(!open)finish(false)}}><AlertDialogContent><AlertDialogHeader><AlertDialogTitle>Confirmar operación</AlertDialogTitle><AlertDialogDescription>{question}</AlertDialogDescription></AlertDialogHeader><AlertDialogFooter><AlertDialogCancel>Cancelar</AlertDialogCancel><AlertDialogAction onClick={()=>finish(true)}>Continuar</AlertDialogAction></AlertDialogFooter></AlertDialogContent></AlertDialog></Context.Provider>;
+ const spanish=typeof document!=='undefined'&&document.documentElement.lang==='es';
+ return <Context.Provider value={value}>{children}<AlertDialog open={!!question} onOpenChange={open=>{if(!open)finish(false)}}><AlertDialogContent><AlertDialogHeader><AlertDialogTitle>{spanish?'Confirmar operación':'Confirm operation'}</AlertDialogTitle><AlertDialogDescription>{question}</AlertDialogDescription></AlertDialogHeader><AlertDialogFooter><AlertDialogCancel>{spanish?'Cancelar':'Cancel'}</AlertDialogCancel><AlertDialogAction onClick={()=>finish(true)}>{spanish?'Continuar':'Continue'}</AlertDialogAction></AlertDialogFooter></AlertDialogContent></AlertDialog></Context.Provider>;
 }
 
 type Props=Omit<ComponentProps<'form'>,'onSubmit'> & {onSubmit:(event:FormEvent<HTMLFormElement>)=>unknown|Promise<unknown>};

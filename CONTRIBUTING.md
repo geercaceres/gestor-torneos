@@ -1,12 +1,12 @@
-# Contribuir
+# Contributing
 
-Gracias por ayudar a mejorar Gestor de Torneos.
+Thank you for helping improve Tournament Manager.
 
-1. Creá un fork y una rama descriptiva.
-2. Instalá dependencias con `npm ci`.
-3. Mantené la interfaz en español claro y adaptable a celular.
-4. Agregá pruebas para reglas de negocio nuevas o correcciones de regresión.
-5. Ejecutá `npm run typecheck`, `npm test` y `npm run build:gcp`.
-6. Abrí un pull request explicando el problema, el cambio y cómo lo verificaste.
+1. Fork the repository and create a descriptive branch.
+2. Install dependencies with `npm ci`.
+3. Keep both English and Spanish interfaces complete and mobile friendly. Repository documentation, sample data, screenshots, issue templates, and code-facing copy must be in English.
+4. Add meaningful tests for new business rules and regressions.
+5. Run `npm run typecheck`, `npm test`, and `npm run build:gcp`.
+6. Open a pull request that explains the problem, the change, and how you verified it.
 
-No incluyas `.env`, contraseñas, archivos SQLite, respaldos, datos bancarios ni datos personales reales. Para cambios del modelo de competición, documentá las migraciones y preservá instalaciones existentes.
+Do not commit `.env`, passwords, SQLite files, backups, bank details, or real personal data. Use fictional English data for examples and screenshots. Competition-model changes must document migrations and preserve existing installations.

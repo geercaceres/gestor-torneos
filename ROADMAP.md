@@ -1,37 +1,38 @@
 # Roadmap
 
-Este documento muestra la dirección del proyecto; no representa fechas ni compromisos de entrega.
+This document describes the direction of the project. It does not promise dates or delivery commitments.
 
-## Disponible
+## Available today
 
-- Eliminación directa de 2 a 32 lugares.
-- Varias jornadas y áreas de juego.
-- Sitio público, panel administrativo, pantalla y RBAC.
-- Resultado por sets o ganador con marcador libre.
-- Caja, inventario, costos, stock y reportes.
-- SQLite, Docker, respaldos y personalización de identidad.
+- Single-elimination brackets with 2 to 32 slots.
+- Multiple event days and playing areas.
+- Public site, administration panel, display view, and RBAC.
+- Set-based scoring or winner with a free-form score.
+- Point of sale, inventory, costs, quantities, voids, and reports.
+- English and Spanish interfaces.
+- SQLite, Docker, backups, and configurable branding.
 
-## Próximas mejoras
+## Near-term improvements
 
-- Nombres editables para cada área de juego.
-- Pausas configurables entre partidos y planificación más flexible.
-- Importación y exportación guiadas desde la interfaz.
-- Mejoras continuas de accesibilidad y experiencia móvil.
+- Editable names for each playing area.
+- Configurable breaks between matches and more flexible scheduling.
+- Guided import and export from the interface.
+- Continued accessibility and mobile improvements.
 
-## Evolución del motor de competencia
+## Competition engine
 
-- Fase de grupos y todos contra todos.
-- Varias etapas dentro de un torneo.
-- Doble eliminación.
-- Sistema suizo.
-- Tabla de posiciones y criterios de desempate configurables.
+- Group stages and round robin.
+- Multiple stages in one tournament.
+- Double elimination.
+- Swiss system.
+- Standings and configurable tie-break criteria.
 
-Estas modalidades requieren un nuevo modelo de etapas, clasificación y emparejamiento; no se implementarán como simples variantes visuales del cuadro actual.
+These formats require a stage, ranking, and pairing model; they will not be implemented as visual variations of the current bracket.
 
-## Plataforma
+## Platform
 
-- Varios torneos por instalación.
-- Clubes u organizaciones con miembros y permisos.
-- Inscripción pública y aprobación de participantes.
-- Notificaciones y canales de comunicación.
-- Separación multiempresa para un servicio alojado.
+- Multiple tournaments per installation.
+- Clubs or organizations with members and permissions.
+- Public registration and participant approval.
+- Notifications and communication channels.
+- Tenant isolation for a hosted service.

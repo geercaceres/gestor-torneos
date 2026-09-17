@@ -1,29 +1,33 @@
-# Preguntas frecuentes
+# Frequently asked questions
 
-## ¿Sirve para deportes distintos al pádel?
+## Does it work for sports other than padel?
 
-Sí. Podés cambiar deporte, participante, área de juego, moneda, reglas y método de resultado. El cuadro sigue siendo de eliminación directa.
+Yes. You can change the sport, participant and playing-area terms, currency, rules, and scoring method. The competition engine remains single elimination.
 
-## ¿Administra varios torneos desde una instalación?
+## Does one installation manage multiple tournaments?
 
-Todavía no. Cada instalación administra un torneo. Multi-torneo y organizaciones están en el [roadmap](../ROADMAP.md).
+Not yet. Each installation manages one tournament. Multi-tournament organizations are listed in the [roadmap](../ROADMAP.md).
 
-## ¿Dónde se guardan los datos?
+## Which languages are supported?
 
-En un archivo SQLite indicado por `DATABASE_PATH`. El volumen de Docker conserva ese archivo entre reconstrucciones.
+The application interface supports English and Spanish. New installations and demo data default to English. Existing installations created before language support migrate to Spanish so their experience does not unexpectedly change.
 
-## ¿Puedo recuperar la contraseña del administrador?
+## Where is data stored?
 
-No en texto plano. Las contraseñas se guardan con scrypt. Generá credenciales nuevas desde un acceso seguro al servidor.
+In the SQLite file selected by `DATABASE_PATH`. The Docker volume preserves it between image rebuilds.
 
-## ¿Qué información es pública?
+## Can I recover the administrator password?
 
-Identidad, participantes, programación, resultados, reglas, contacto, ubicación, menú y datos de transferencia cargados en el torneo. Usuarios, contraseñas, costos y reportes permanecen privados.
+Not as plaintext. Passwords are stored with scrypt. Generate new credentials from secure server access.
 
-## ¿Cómo pruebo sin usar datos reales?
+## Which information is public?
 
-Usá `npm run demo:seed -- data/demo.sqlite`. Nunca publiques una base real para crear capturas o reportar errores.
+Identity, participant names, schedule, results, rules, contact details, location, menu, and configured transfer information. Users, passwords, costs, inventory adjustments, and reports remain private.
 
-## ¿Por qué no cambia el formato después de comenzar?
+## How can I test without real data?
 
-Cambiar el método de resultado o la cantidad de sets invalidaría resultados ya disputados. Reabrí esos resultados antes de modificar el formato.
+Run `npm run demo:seed -- data/demo.sqlite`. The seed uses fictional English data. Never publish a real database to create screenshots or report issues.
+
+## Why is scoring locked after matches begin?
+
+Changing the scoring method or sets-to-win target could invalidate recorded results. Reopen those results before modifying the format.

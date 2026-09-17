@@ -1,36 +1,36 @@
-name: Reportar un error
-description: Informá un comportamiento reproducible del proyecto.
+name: Report a bug
+description: Report reproducible behavior in the project.
 title: "[Bug]: "
 labels: [bug]
 body:
   - type: markdown
     attributes:
-      value: No incluyas contraseñas, bases reales ni datos personales.
+      value: Do not include passwords, production databases, or personal data.
   - type: textarea
     id: problem
     attributes:
-      label: Qué ocurrió
-      description: Explicá el resultado observado y el esperado.
+      label: What happened
+      description: Explain the observed and expected results.
     validations:
       required: true
   - type: textarea
     id: steps
     attributes:
-      label: Pasos para reproducirlo
-      placeholder: "1. Abrir…\n2. Elegir…\n3. Ver…"
+      label: Steps to reproduce
+      placeholder: "1. Open…\n2. Select…\n3. Observe…"
     validations:
       required: true
   - type: input
     id: version
     attributes:
-      label: Versión o commit
+      label: Version or commit
   - type: input
     id: environment
     attributes:
-      label: Navegador y entorno
-      placeholder: Chrome 128, Android; Docker en Ubuntu 24.04
+      label: Browser and environment
+      placeholder: Chrome 128 on Android; Docker on Ubuntu 24.04
   - type: textarea
     id: logs
     attributes:
-      label: Logs o capturas sin datos sensibles
+      label: Sanitized logs or screenshots
       render: shell

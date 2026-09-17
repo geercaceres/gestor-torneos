@@ -14,7 +14,7 @@ async function start(dbPath){
  const base=await new Promise((res,rej)=>{let output='';const timeout=setTimeout(()=>{child.kill();rej(new Error('No inició el servidor'))},15000);child.stdout.on('data',chunk=>{output+=chunk;const port=output.match(/localhost:(\d+)/);if(port){clearTimeout(timeout);res('http://127.0.0.1:'+port[1])}});child.on('exit',code=>{clearTimeout(timeout);rej(new Error('Servidor terminó: '+code))});child.stderr.on('data',chunk=>{output+=chunk});});
  return{base,child,stop:()=>new Promise(res=>{child.once('exit',res);child.kill()})};
 }
-test('API: autenticación, CSRF, concurrencia, persistencia, exportación y límites',async()=>{
+test('API: authentication, CSRF, concurrency, persistence, export, and limits',async()=>{
  const folder=mkdtempSync(resolve(tmpdir(),'padel-tests-'));let server=await start(resolve(folder,'test.sqlite'));
  const call=(path,body,cookie='',origin='http://localhost:3000')=>fetch(server.base+'/api/'+path,{method:body===undefined?'GET':'POST',headers:{'Content-Type':'application/json',Origin:origin,Cookie:cookie},body:body===undefined?undefined:JSON.stringify(body)});
  try{
@@ -44,7 +44,7 @@ test('API: autenticación, CSRF, concurrencia, persistencia, exportación y lím
 
 
 
-test('API multiusuario: permisos, ventas concurrentes, costos privados y revocación',async()=>{
+test('Multi-user API: permissions, concurrent sales, private costs, and revocation',async()=>{
  const folder=mkdtempSync(resolve(tmpdir(),'padel-tests-'));let server=await start(resolve(folder,'food.sqlite'));
  const call=(path,body,cookie='')=>fetch(server.base+'/api/'+path,{method:body===undefined?'GET':'POST',headers:{'Content-Type':'application/json',Origin:'http://localhost:3000',Cookie:cookie},body:body===undefined?undefined:JSON.stringify(body)});
  const login=async(username,secret=password)=>{const r=await call('login',{username,password:secret});assert.equal(r.status,200);const body=await r.json();return{cookie:r.headers.get('set-cookie').split(';')[0],user:body.user};};

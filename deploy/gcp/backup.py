@@ -25,7 +25,7 @@ def command(*args):
                    stdout=subprocess.DEVNULL)
 
 with tempfile.TemporaryDirectory(prefix='backup-', dir='/var/lib/torneos-backup') as directory:
-    target = Path(directory) / 'torneo.sqlite'
+    target = Path(directory) / 'tournament.sqlite'
     command('exec', '-T', 'app', 'node', 'scripts/backup.mjs', '/data/backups/current.sqlite')
     command('cp', 'app:/data/backups/current.sqlite', str(target))
     with sqlite3.connect(f'file:{target}?mode=ro', uri=True) as connection:

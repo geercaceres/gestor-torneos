@@ -1,7 +1,7 @@
-# Seguridad
+# Security
 
-No publiques vulnerabilidades explotables, credenciales ni datos personales en un issue público.
+Do not publish exploitable vulnerabilities, credentials, or personal data in a public issue.
 
-Para informar un problema de seguridad, contactá de forma privada al responsable del repositorio e incluí una descripción, pasos mínimos para reproducirlo y el posible impacto. No accedas a datos de terceros ni pruebes el problema contra instalaciones que no controles.
+Report security problems privately to the repository owner. Include a description, minimal reproduction steps, and the potential impact. Do not access third-party data or test against installations you do not control.
 
-Las versiones sin mantenimiento y las instalaciones modificadas por terceros pueden no recibir correcciones. Antes de desplegar, generá credenciales propias, activá HTTPS y mantené copias de seguridad fuera del servidor.
+Unmaintained releases and third-party modifications may not receive fixes. Before deployment, generate installation-specific credentials, enable HTTPS, and keep backups outside the server.

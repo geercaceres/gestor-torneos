@@ -1,13 +1,13 @@
-# Conceptos
+# Terminology
 
-- **Torneo:** evento administrado por una instalación.
-- **Participante:** equipo, pareja, jugador u otra unidad que ocupa un lugar del cuadro.
-- **Área de juego:** cancha, pista, campo, mesa o servidor donde se disputa un partido.
-- **Cuadro:** estructura de cruces de eliminación directa.
-- **Ronda:** conjunto de partidos con la misma distancia hasta la final.
-- **Pase libre:** avance sin jugar cuando un cruce tiene un solo participante confirmado.
-- **Llamado:** participantes convocados para acercarse al área de juego.
-- **En juego:** partido activo que ocupa un área.
-- **W.O.:** resultado por ausencia, registrado manualmente con un motivo.
-- **RBAC:** permisos asignados por rol para limitar cada módulo administrativo.
-- **Margen bruto:** ingresos por ventas menos costo de los productos vendidos.
+- **Tournament:** the event managed by one installation.
+- **Participant:** a team, pair, player, or other unit occupying one bracket slot.
+- **Playing area:** the court, field, table, or server where a match takes place.
+- **Bracket:** the single-elimination matchup structure.
+- **Round:** matches with the same number of wins remaining before the final.
+- **Bye:** advancement without playing when a matchup has one confirmed participant.
+- **Called:** participants have been asked to report to the playing area.
+- **Live:** an active match occupying a playing area.
+- **W.O. / walkover:** an absence result manually recorded with a reason.
+- **RBAC:** role-based permissions restricting administrative modules.
+- **Gross margin:** sales revenue minus the recorded cost of goods sold.

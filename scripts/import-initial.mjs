@@ -8,9 +8,9 @@ const root=resolve(fileURLToPath(new URL('..',import.meta.url)));
 if(existsSync(resolve(root,'.env')))process.loadEnvFile(resolve(root,'.env'));
 if(!process.argv[2])throw new Error('Indicar archivo JSON público del torneo.');
 const input=JSON.parse(readFileSync(process.argv[2],'utf8'));
-if(![1,2,3,4].includes(input.schemaVersion)||!Number.isInteger(input.revision)||input.revision<0||!input.config||!Array.isArray(input.teams)||!Array.isArray(input.matches)||!Array.isArray(input.menu))throw new Error('Formato de torneo inválido.');
+if(![1,2,3,4,5].includes(input.schemaVersion)||!Number.isInteger(input.revision)||input.revision<0||!input.config||!Array.isArray(input.teams)||!Array.isArray(input.matches)||!Array.isArray(input.menu))throw new Error('Invalid tournament format.');
 const state=migrateState(input);
-const path=resolve(root,process.env.DATABASE_PATH||'data/torneo.sqlite');
+const path=resolve(root,process.env.DATABASE_PATH||'data/tournament.sqlite');
 mkdirSync(dirname(path),{recursive:true});
 const db=new DatabaseSync(path);
 try{

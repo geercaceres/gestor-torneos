@@ -6,7 +6,7 @@ COPY . .
 RUN npm run typecheck && npm run build:gcp
 
 FROM node:24-bookworm-slim AS runtime
-ENV NODE_ENV=production HOST=0.0.0.0 PORT=3001 DATABASE_PATH=/data/torneo.sqlite
+ENV NODE_ENV=production HOST=0.0.0.0 PORT=3001 DATABASE_PATH=/data/tournament.sqlite
 WORKDIR /app
 COPY --from=build /app/dist-web ./dist-web
 COPY server ./server
