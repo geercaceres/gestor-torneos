@@ -1,11 +1,11 @@
-FROM node:24-bookworm-slim AS build
+FROM node:26-bookworm-slim AS build
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .
 RUN npm run typecheck && npm run build:gcp
 
-FROM node:24-bookworm-slim AS runtime
+FROM node:26-bookworm-slim AS runtime
 ENV NODE_ENV=production HOST=0.0.0.0 PORT=3001 DATABASE_PATH=/data/tournament.sqlite
 WORKDIR /app
 COPY --from=build /app/dist-web ./dist-web
